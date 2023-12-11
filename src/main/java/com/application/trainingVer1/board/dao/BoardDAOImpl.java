@@ -1,5 +1,7 @@
 package com.application.trainingVer1.board.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,18 @@ public class BoardDAOImpl implements BoardDAO {
 	public void insertBoard(BoardDTO boardDTO) {
 		sqlSession.insert("boardMapper.insertBoard",boardDTO);
 	}
+
+	@Override
+	public List<BoardDTO> selectListBoard() {
+		return sqlSession.selectList("boardMapper.selectListBoard");
+	}
+
+	@Override
+	public BoardDTO selectOneBoard(long boardId) {
+		return sqlSession.selectOne("boardMapper.selectOneBoard", boardId);
+	}
+	
+	
 	
 	
 	

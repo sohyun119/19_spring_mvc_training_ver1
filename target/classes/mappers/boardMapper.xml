@@ -17,6 +17,22 @@
 			#{content}
 		)
 	</insert>
+	
+	<select id="selectListBoard" resultType="BoardDTO">
+		SELECT
+			*
+		FROM
+			BOARD
+	</select>
+	
+	<select id="selectOneBoard" parameterType="long" resultType="BoardDTO">
+		SELECT
+			*
+		FROM
+			BOARD
+		WHERE
+			BOARD_ID = #{boardId}
+	</select>
 
 	
 
