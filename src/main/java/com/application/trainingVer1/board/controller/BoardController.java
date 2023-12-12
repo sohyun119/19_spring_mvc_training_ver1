@@ -61,6 +61,7 @@ public class BoardController {
 		
 		return mv;
 	}
+	 
 	
 	@GetMapping("/authentication")
 	public ModelAndView authentication(@RequestParam("boardId") long boardId , @RequestParam("menu") String menu) {

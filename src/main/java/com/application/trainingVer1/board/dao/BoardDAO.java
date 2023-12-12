@@ -12,6 +12,7 @@ public interface BoardDAO {
 	public String selectOnePasswd(long boardId);
 	public void updateBoard(BoardDTO boardDTO);
 	public void deleteBoard(long boardId);
+	public void updateReadCount(long boardId);
 	
 	
 }

@@ -43,6 +43,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public void deleteBoard(long boardId) {
 		sqlSession.delete("boardMapper.deleteBoard", boardId);
 	}
+
+	@Override
+	public void updateReadCount(long boardId) {
+		sqlSession.update("boardMapper.updateReadCount", boardId);
+	}
 	
 	
 	

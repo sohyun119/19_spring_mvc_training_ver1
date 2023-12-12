@@ -70,6 +70,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardDTO getBoardDetail(long boardId) {
+		
+		boardDAO.updateReadCount(boardId);
+		
 		return boardDAO.selectOneBoard(boardId);
 	}
 
