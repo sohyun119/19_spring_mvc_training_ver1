@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="수정" onclick="">
+					<input type="button" value="수정" onclick="location.href='authentication?boardId=${boardDTO.boardId}&menu=update'">
 					<input type="button" value="삭제" onclick="">
 					<input type="button" value="목록보기" onclick="location.href='boardList'">
 				</td>

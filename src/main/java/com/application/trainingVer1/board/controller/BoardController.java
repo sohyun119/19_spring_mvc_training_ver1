@@ -34,8 +34,8 @@ public class BoardController {
 		
 		String jsScript ="<script>";
 				jsScript += "alert('Post Added');";
-				jsScript += "location.href='addBoard';";
-				jsScript += "</script>";
+				jsScript += "location.href='boardDetail?boardId=";
+				jsScript += "';</script>";
 		
 		return jsScript;
 	}
@@ -62,7 +62,50 @@ public class BoardController {
 		return mv;
 	}
 	
+	@GetMapping("/authentication")
+	public ModelAndView authentication(@RequestParam("boardId") long boardId , @RequestParam("menu") String menu) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/authentication");  						// view
+		mv.addObject("boardDTO" , boardService.getBoardDetail(boardId)); // model
+		mv.addObject("menu", menu);
+		
+		return mv;
 	
+	}
+	
+	
+	@PostMapping("/authentication")
+	@ResponseBody
+	public String authentication(@ModelAttribute BoardDTO boardDTO,
+								@RequestParam("menu") String menu) {
+		
+		String jsScript = "";
+		
+		// 비번 맞음
+		if (boardService.checkAuthorizedUser(boardDTO)) {
+			if(menu.equals("update")) {
+				jsScript = "<script>";
+				jsScript += "location.href='modifyBoard?boardId=" + boardDTO.getBoardId() + "';";
+				jsScript += "</script>";
+			}
+			else if(menu.equals("delete")) {
+				jsScript = "<script>";
+				jsScript += "location.href='removeBoard?boardId=" + boardDTO.getBoardId() + "';";
+				jsScript += "</script>";
+			}
+		}
+		else { // 비번틀림
+			jsScript = "<script>";
+			jsScript += "alert('Check your Id or Password');";
+			jsScript += "history.go(-1);";
+			jsScript += "</script>";
+		}
+		
+		return jsScript;
+	
+	}
 	
 	
 	

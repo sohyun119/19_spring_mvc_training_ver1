@@ -16,7 +16,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void insertBoard(BoardDTO boardDTO) {
-		sqlSession.insert("boardMapper.insertBoard",boardDTO);
+		sqlSession.insert("boardMapper.insertBoard" , boardDTO);
 	}
 
 	@Override
@@ -26,9 +26,13 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public BoardDTO selectOneBoard(long boardId) {
-		return sqlSession.selectOne("boardMapper.selectOneBoard", boardId);
+		return sqlSession.selectOne("boardMapper.selectOneBoard" , boardId);
 	}
-	
+
+	@Override
+	public String selectOnePasswd(long boardId) {
+		return sqlSession.selectOne("boardMapper.selectOnePasswd",boardId);
+	}
 	
 	
 	

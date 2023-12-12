@@ -4,6 +4,9 @@
 <mapper namespace="boardMapper">
 
 	<insert id="insertBoard" parameterType="BoardDTO">
+		<selectKey resultType="String" keyProperty="boardID" order="AFTER">
+	        SELECT BOARD_ID FROM BOARD        
+	    </selectKey>   
 		INSERT INTO BOARD(
 			PASSWD,
 			WRITER,
@@ -34,7 +37,14 @@
 			BOARD_ID = #{boardId}
 	</select>
 
-	
+	<select id="selectOnePasswd" parameterType="long" resultType="String">
+		SELECT
+			PASSWD
+		FROM
+			BOARD
+		WHERE
+			BOARD_ID = #{boardId}
+	</select>
 
 
 </mapper>

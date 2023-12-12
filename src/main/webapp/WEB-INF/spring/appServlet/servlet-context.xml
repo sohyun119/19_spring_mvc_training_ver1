@@ -23,6 +23,8 @@
 	
 	<context:component-scan base-package="com.application.trainingVer1" />
 	
+	<!-- 암호화 관련 -->
+	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> 
 	
 	
 </beans:beans>
