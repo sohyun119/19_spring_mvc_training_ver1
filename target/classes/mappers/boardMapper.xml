@@ -4,9 +4,11 @@
 <mapper namespace="boardMapper">
 
 	<insert id="insertBoard" parameterType="BoardDTO">
+		<!--
 		<selectKey resultType="String" keyProperty="boardID" order="AFTER">
 	        SELECT BOARD_ID FROM BOARD        
-	    </selectKey>   
+	    </selectKey> 
+	    -->   
 		INSERT INTO BOARD(
 			PASSWD,
 			WRITER,
@@ -45,6 +47,25 @@
 		WHERE
 			BOARD_ID = #{boardId}
 	</select>
+	
+	<update id="updateBoard" parameterType="BoardDTO">
+		UPDATE
+			BOARD
+		SET
+			  SUBJECT = #{subject}
+			, CONTENT = #{content}
+			, MODIFY_DT = NOW()
+		WHERE
+			BOARD_ID = #{boardId}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="long">
+		DELETE FROM 
+			BOARD
+		WHERE
+			BOARD_ID = #{boardId}
+	</delete>
+
 
 
 </mapper>

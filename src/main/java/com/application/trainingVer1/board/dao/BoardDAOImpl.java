@@ -33,6 +33,16 @@ public class BoardDAOImpl implements BoardDAO {
 	public String selectOnePasswd(long boardId) {
 		return sqlSession.selectOne("boardMapper.selectOnePasswd",boardId);
 	}
+
+	@Override
+	public void updateBoard(BoardDTO boardDTO) {
+		sqlSession.update("boardMapper.updateBoard", boardDTO);
+	}
+
+	@Override
+	public void deleteBoard(long boardId) {
+		sqlSession.delete("boardMapper.deleteBoard", boardId);
+	}
 	
 	
 	

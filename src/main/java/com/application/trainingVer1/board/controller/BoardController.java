@@ -34,7 +34,7 @@ public class BoardController {
 		
 		String jsScript ="<script>";
 				jsScript += "alert('Post Added');";
-				jsScript += "location.href='boardDetail?boardId=";
+				jsScript += "location.href='boardList";
 				jsScript += "';</script>";
 		
 		return jsScript;
@@ -107,7 +107,56 @@ public class BoardController {
 	
 	}
 	
+	@GetMapping("/modifyBoard")
+	public ModelAndView modifyBoard(@RequestParam("boardId") long boardId) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/modifyBoard");
+		mv.addObject("boardDTO",boardService.getBoardDetail(boardId));
+		
+		return mv;
+	}
 	
+	@PostMapping("/modifyBoard")
+	@ResponseBody
+	public String modifyBoard(@ModelAttribute BoardDTO boardDTO) { //@ModelAttribute 로 위의 메소드에서 넘어온 DTO 받기 
+		
+		boardService.modifyBoard(boardDTO);
+		
+		String  jsScript = "";
+				jsScript = "<script>";
+				jsScript += "alert('It is changed!');";
+				jsScript += "location.href='boardList';";
+				jsScript += "</script>";
+		
+		return jsScript;
+	}
+	
+	@GetMapping("/removeBoard")
+	public ModelAndView removeBoard(@RequestParam("boardId") long boardId) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/removeBoard");
+		mv.addObject("boardId", boardId);
+	
+		return mv;
+	}
+	
+	@PostMapping("/removeBoard")
+	@ResponseBody
+	public String postRemoveBoard(@RequestParam("boardId") long boardId) {
+		
+		boardService.removeBoard(boardId);
+		
+		String  jsScript = "";
+				jsScript = "<script>";
+				jsScript += "alert('It has been deleted!');";
+				jsScript += "location.href='boardList';";
+				jsScript += "</script>";
+
+		return jsScript;
+	}
 	
 	
 	

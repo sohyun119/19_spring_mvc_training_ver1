@@ -10,6 +10,8 @@ public interface BoardService {
 	public List<BoardDTO> getBoardList();
 	public BoardDTO getBoardDetail(long boardId);
 	public boolean checkAuthorizedUser(BoardDTO boardDTO);
+	public void modifyBoard(BoardDTO boardDTO);
+	public void removeBoard(long boardId);
 	
 	
 }

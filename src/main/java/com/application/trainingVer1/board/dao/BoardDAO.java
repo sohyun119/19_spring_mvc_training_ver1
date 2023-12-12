@@ -10,6 +10,8 @@ public interface BoardDAO {
 	public List<BoardDTO> selectListBoard();
 	public BoardDTO selectOneBoard(long boardId);
 	public String selectOnePasswd(long boardId);
+	public void updateBoard(BoardDTO boardDTO);
+	public void deleteBoard(long boardId);
 	
 	
 }

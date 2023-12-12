@@ -90,6 +90,18 @@ public class BoardServiceImpl implements BoardService {
 		return isAuthorizedUser;
 		
 	}
+
+	@Override
+	public void modifyBoard(BoardDTO boardDTO) {
+		boardDAO.updateBoard(boardDTO);
+	}
+
+	@Override
+	public void removeBoard(long boardId) {
+		boardDAO.deleteBoard(boardId);
+	}
+	
+	
 	
 	
 }
