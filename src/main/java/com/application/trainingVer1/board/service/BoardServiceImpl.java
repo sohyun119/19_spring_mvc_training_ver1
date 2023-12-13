@@ -69,9 +69,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardDTO getBoardDetail(long boardId) {
+	public BoardDTO getBoardDetail(long boardId, boolean isUpdateReadCnt) {
 		
-		boardDAO.updateReadCount(boardId);
+		if(isUpdateReadCnt) {
+			boardDAO.updateReadCount(boardId);
+		}
 		
 		return boardDAO.selectOneBoard(boardId);
 	}

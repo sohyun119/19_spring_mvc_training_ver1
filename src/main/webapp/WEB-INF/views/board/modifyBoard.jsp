@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>modify board</title>
+<!-- resource 경로부터 작성 -->
+<script src="resource/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 
@@ -28,6 +30,7 @@
 					<td>글내용</td>
 					<td>
 						<textarea rows="10" cols="60" name="content">${boardDTO.content}</textarea>
+						<script>CKEDITOR.replace("content");</script>
 					</td>
 				</tr>
 				<tr align="center">

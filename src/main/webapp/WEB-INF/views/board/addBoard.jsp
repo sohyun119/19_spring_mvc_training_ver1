@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>add board</title>
+<!-- resources 경로부터 작성한다. -->
+<script src="resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 
@@ -27,13 +29,14 @@
 					<td>글내용</td>
 					<td>
 						<textarea rows="10" cols="50" name="content" ></textarea>
+						<script>CKEDITOR.replace("content");</script>
 					</td>
 				</tr>
 				<tr >
 					<td colspan="2" align="center">
 						<input type="submit" value="글쓰기" />
 						<input type="reset"  value="다시작성" />
-						<input type="button" onclick="" value="목록보기">
+						<input type="button" onclick="location.href='boardList'" value="목록보기">
 					</td>
 				</tr>
 			</table>

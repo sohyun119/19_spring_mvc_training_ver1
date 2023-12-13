@@ -57,7 +57,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("board/boardDetail");
-		mv.addObject("boardDTO", boardService.getBoardDetail(boardId));
+		mv.addObject("boardDTO", boardService.getBoardDetail(boardId, true));
 		
 		return mv;
 	}
@@ -69,7 +69,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("board/authentication");  						// view
-		mv.addObject("boardDTO" , boardService.getBoardDetail(boardId)); // model
+		mv.addObject("boardDTO" , boardService.getBoardDetail(boardId, false)); // model
 		mv.addObject("menu", menu);
 		
 		return mv;
@@ -114,7 +114,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("board/modifyBoard");
-		mv.addObject("boardDTO",boardService.getBoardDetail(boardId));
+		mv.addObject("boardDTO",boardService.getBoardDetail(boardId, false));
 		
 		return mv;
 	}
